@@ -47,21 +47,21 @@
                     <div class="form-group">
                         <label for="reqGathered" class="col-sm-5 control-label">reqGathered</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="reqGathered" name="reqGathered" value="<%- model.reqGathered %>">
+                            <input type="checkbox" class="form-control" id="reqGathered" name="reqGathered" <% if(model.reqGathered) { %> checked="checked" <% } %> value='true'>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="diagramComplete" class="col-sm-5 control-label">diagramComplete</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="diagramComplete" name="diagramComplete" value="<%- model.diagramComplete %>">
+                            <input type="checkbox" class="form-control" id="diagramComplete" name="diagramComplete" <% if(model.diagramComplete) { %> checked="checked" <% } %> >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="toComplete" class="col-sm-5 control-label">toComplete</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="toComplete" name="toComplete" value="<%- model.toComplete %>">
+                            <input type="checkbox" class="form-control" id="toComplete" name="toComplete" <% if(model.toComplete) { %> checked="checked" <% } %> >
                         </div>
                     </div>
 

@@ -8,7 +8,20 @@ window.OppListView = Backbone.View.extend({
         this.page = options.page;
         this.isLoading = false;
         this.user = options.user;
-        this.oppsList = new UserOppCollection();
+        
+
+        if (options.open == true) {
+            console.log("open.closed open opps = "+options.open);
+            this.oppsList = new OpenUserOppCollection();
+        } else if (options.open == false) {
+            console.log("open.closed Closed opps = "+options.open);
+            this.oppsList = new ClosedUserOppCollection();
+        } else {
+            console.log("open.closed All opps = "+options.open);
+            this.oppsList = new UserOppCollection();
+        }
+
+        
         this.oppsList.page = this.page;
         this.oppsList.userName = this.user.get('name');
 

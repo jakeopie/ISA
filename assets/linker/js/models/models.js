@@ -99,6 +99,31 @@ window.UserOppCollection = Backbone.Collection.extend({
     
 });
 
+window.OpenUserOppCollection = Backbone.Collection.extend({
+    model:Opp,
+
+    url: function() {
+        console.log("fetching new list of open opps for "+ this.userName + " page: "+ this.page);
+        return '/saopps/openUser?userName=' + this.userName + '&page=' + this.page
+    },
+
+    userName: null,
+    page: 0
+    
+});
+
+window.ClosedUserOppCollection = Backbone.Collection.extend({
+    model:Opp,
+
+    url: function() {
+        console.log("fetching new list of open opps for "+ this.userName + " page: "+ this.page);
+        return '/saopps/closedUser?userName=' + this.userName + '&page=' + this.page
+    },
+
+    userName: null,
+    page: 0
+    
+});
 
 window.UserReg = Backbone.Model.extend({
     urlRoot:'/user/signup'

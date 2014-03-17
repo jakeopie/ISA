@@ -7,6 +7,8 @@ var AppRouter = Backbone.Router.extend({
         "opps/page/:page"	: "list",
         "opps/add"         : "addOpp",
         "opps/:id"         : "oppDetails",
+        "opps/open/:id"     : "openOpps",
+        "opps/closed/:id"   : "closedOpps",
         "about"             : "about"
     },
 
@@ -17,6 +19,30 @@ var AppRouter = Backbone.Router.extend({
         this.headerView = new HeaderView({model : user});
             $('#header').html(this.headerView.el);
             $("#content").html(new OppListView({page: 1, user: user}).el);
+
+            this.headerView.selectMenuItem('home-menu');
+        }});    
+    },
+
+    openOpps: function (id) {
+
+        var user = new User({id: id});
+        user.fetch({success: function(){
+        this.headerView = new HeaderView({model : user});
+            $('#header').html(this.headerView.el);
+            $("#content").html(new OppListView({page: 1, user: user, open: true}).el);
+
+            this.headerView.selectMenuItem('home-menu');
+        }});    
+    },
+
+    closedOpps: function (id) {
+
+        var user = new User({id: id});
+        user.fetch({success: function(){
+        this.headerView = new HeaderView({model : user});
+            $('#header').html(this.headerView.el);
+            $("#content").html(new OppListView({page: 1, user: user, open: false}).el);
 
             this.headerView.selectMenuItem('home-menu');
         }});    
@@ -35,6 +61,7 @@ var AppRouter = Backbone.Router.extend({
     },
 
 	list: function(page) {
+        console.log("list route");
         var p = page ? parseInt(page, 10) : 1;
         var oppsList = new OppCollection();
         oppsList.fetch({success: function(){
